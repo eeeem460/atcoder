@@ -1,0 +1,15 @@
+・gdb のインストール
+    sudo apt install gdb
+    
+・boost のインストール
+    https://qiita.com/tubo28/items/fa8ee013390184b0ba18
+
+・ac-libraryフォルダをatcoder直下に移動する．
+
+・bits/stdc++.hのプリコンパイル
+    ~/atcoder/ac-library/bits に移動
+    ~/atcoder/ac-library/bits 下に stdc++.h.gch ファイルがある
+    ~/atcoder/ac-library/bits で以下を実行 
+    g++-9 (コンパイラオプション) stdc++.h -o stdc++.h.gch/(適当なファイル名).gch
+
+    参考 : https://qiita.com/DaikiSuyama/items/e502e09a1090f4a2cee3

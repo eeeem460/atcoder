@@ -1,0 +1,2 @@
+cd /mnt/c/Users/user01 でwindowsにアクセス
+cp -r (フォルダ名) ~/atcoder/ac-library でフォルダごとコピー
