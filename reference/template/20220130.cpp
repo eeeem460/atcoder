@@ -133,7 +133,7 @@ void debug_out(vector<ll> V) {
         if (i == (int)V.size() - 1)
             cout << "]\n";
         else if (i == MAX_DUBUG_SIZE - 1)
-            cout << "...\n";
+            cout << ",...\n";
         else
             cout << ",";
     }
@@ -165,7 +165,7 @@ void debug_out(vector<vector<ll>> VV) {
             if (j == (int)VV[i].size() - 1)
                 cout << "]\n";
             else if (j == MAX_DUBUG_SIZE - 1)
-                cout << "...\n";
+                cout << ",...\n";
             else
                 cout << ",";
         }
