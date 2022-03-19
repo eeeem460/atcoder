@@ -61,9 +61,9 @@ vector<ll> factor(vector<ll>& min_factor, ll M) {
 }
 
 /* 
-    高速素因数分解 前処理 O(NloglogN) クエリ処理 O(M)
+    高速素因数分解 前処理 O(NloglogN) クエリ処理 O(logM)
     N 以下の整数を素因数分解可能
-    M を素因数分解するのに O(M)
+    M を素因数分解するのに O(logM)
 
     **使い方**
     ll n = 100, m = 50;
