@@ -5,8 +5,10 @@ using ll = long long;
 #define INCANT cin.tie(nullptr), ios::sync_with_stdio(false), cout << fixed << setprecision(12)
 #ifdef MY_DEBUG
 #define dbg(...) debug_out(__VA_ARGS__)
+#define dbgn(var) debug_out(#var, "=", var)
 #else
 #define dbg(...)
+#define dbgn(...)
 #endif
 void debug_out();
 void debug_out(vector<ll>);
@@ -18,13 +20,12 @@ template <class T> T pwr(T, ll);
 template <class T> T squ(T);
 ll fact(ll);
 ll comb(ll, ll);
+ll ctoll(char);
 const ll LINF = (ll)1e18 + 7;
 const double EPS = 1e-9;
+const int MAX_DUBUG_SIZE = 10;
 
-// https://atcoder.jp/contests/abc177/tasks/abc177_e
-
-
-
+// 問題 https://atcoder.jp/contests/abc177/tasks/abc177_e
 
 // min_factor[i] = i を割り切る最小の数
 // min_factor[i] == i なら i は素数（i = 0, 1 のときを除く）
@@ -60,16 +61,38 @@ vector<ll> factor(vector<ll>& min_factor, ll M) {
     return factor_M;
 }
 
-/* 
-    高速素因数分解 前処理 O(NloglogN) クエリ処理 O(logM)
-    N 以下の整数を素因数分解可能
-    M を素因数分解するのに O(logM)
+// M を素因数分解したペア型の配列を返す．
+vector<pair<ll, ll>> prime_factors(vector<ll>& min_factor, ll M) {
+    ll Q = M;
+    vector<pair<ll, ll>> factor_M;
 
-    **使い方**
+    while (Q >= 2) {
+        ll prime = min_factor[Q];
+        ll exp = 0;
+        while (min_factor[Q] == prime) {
+            ++exp;
+            Q /= prime;
+        }
+        factor_M.push_back(make_pair(prime, exp));
+    }
+
+    return factor_M;
+}
+
+/*
+    高速素因数分解 前処理 O(NloglogN) クエリ処理 O(M)
+    N 以下の整数を素因数分解可能
+    M を素因数分解するのに O(M)
+
+    使い方
+
     ll n = 100, m = 50;
     vector<ll> sieve = set_sieve(n);
     vector<ll> factor_m = factor(sieve, m);
-      // factor_m = {2, 5, 5} 
+      // 素因数の列挙 factor_m = {2, 5, 5}
+
+    vector<pair<ll, ll>> factors_m = prime_factors(sieve, m);
+      // 素因数分解 factors_m = {(2, 1), (5, 2)}
 */
 
 int main() {
@@ -81,40 +104,34 @@ int main() {
         cin >> a[i];
     }
 
-    const ll MAX_A = pwr(10, 6);
-    vector<ll> min_factor = set_sieve(MAX_A);
-
-    bool p_coprime = true;
-    vector<bool> co_factor(MAX_A);
+    bool pc = true;
+    vector<ll> sieve = set_sieve(1100000);
+    vector<ll> cnt(1100000);
     for (ll i = 0; i < n; i++) {
-        vector<ll> factor_ai = factor(min_factor, a[i]);
-        sort(factor_ai.begin(), factor_ai.end());
-        factor_ai.erase(unique(factor_ai.begin(), factor_ai.end()), factor_ai.end());
-
-        for (auto&& x : factor_ai) {
-            if (co_factor[x]) {
-                p_coprime = false;
-            }
-            else {
-                co_factor[x] = true;
+        vector<pair<ll, ll>> factor_a = prime_factors(sieve, a[i]);
+        for (auto&& [x, p] : factor_a) {
+            cnt[x]++;
+            if (cnt[x] > 1) {
+                pc = false;
             }
         }
     }
-    if (p_coprime) {
+
+    bool sc = false;
+    ll G = 0;
+    for (auto&& x : a) {
+        G = gcd(x, G);
+    }
+    if (G == 1) sc = true;
+
+    if (pc) {
         cout << "pairwise coprime" << endl;
-        return 0;
     }
-
-    ll G = __gcd(a[0], a[1]);
-    for (ll i = 2; i < n; i++) {
-        G = __gcd(G, a[i]);
-    }
-
-    if (G == 1) {
+    else if (sc) {
         cout << "setwise coprime" << endl;
     }
     else {
-        cout << "not coprime" << endl;
+        cout << "not coprime " << endl;
     }
 }
 
@@ -204,18 +221,26 @@ void debug_out() {
 }
 
 void debug_out(vector<ll> V) {
+    const int MAX_SIZE = min((int)V.size(), MAX_DUBUG_SIZE);
+
     cout << "\033[33m";
     if (V.empty()) {
         cout << "[]" << endl;
         return;
     }
     cout << "[";
-    for (ll i = 0; i < (ll)V.size(); i++) {
+    for (int i = 0; i < MAX_SIZE; i++) {
         if (V[i] == LINF)
             cout << "INF";
         else
             cout << V[i];
-        cout << (i == int(V.size() - 1) ? "]\033[m\n" : ",");
+
+        if (i == (int)V.size() - 1)
+            cout << "]\n";
+        else if (i == MAX_DUBUG_SIZE - 1)
+            cout << ",...\n";
+        else
+            cout << ",";
     }
     return;
 }
@@ -227,20 +252,35 @@ void debug_out(vector<vector<ll>> VV) {
         return;
     }
     cout << "[\n";
-    for (auto&& V : VV) {
-        if (V.empty()) {
+
+    int MAX_ROW = min((int)VV.size(), MAX_DUBUG_SIZE);
+    for (int i = 0; i < MAX_ROW; i++) {
+        const int MAX_COLUMN = min((int)VV[i].size(), MAX_DUBUG_SIZE);
+        if (VV[i].empty()) {
             cout << "[]" << endl;
             continue;
         }
         cout << "[";
-        for (ll i = 0; i < (ll)V.size(); i++) {
-            if (V[i] == LINF)
+        for (int j = 0; j < MAX_COLUMN; j++) {
+            if (VV[i][j] == LINF)
                 cout << "INF";
             else
-                cout << V[i];
-            cout << (i == int(V.size() - 1) ? "]\n" : ",");
+                cout << VV[i][j];
+
+            if (j == (int)VV[i].size() - 1)
+                cout << "]\n";
+            else if (j == MAX_DUBUG_SIZE - 1)
+                cout << ",...\n";
+            else
+                cout << ",";
+        }
+
+        if (i != (int)VV.size() - 1 and i == MAX_DUBUG_SIZE - 1) {
+            cout << ":\n:\033[m\n";
+            return;
         }
     }
+
     cout << "]\033[m\n";
     return;
 }
@@ -291,4 +331,8 @@ ll comb(ll n, ll r) {  // comb(60, 30)までオーバーフローなし
         res /= i;
     }
     return res;
+}
+
+ll ctoll(char c) {
+    return ll(c - '0');
 }
