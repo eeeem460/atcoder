@@ -7,8 +7,12 @@
 ・ac-libraryフォルダをatcoder直下に移動する．
 
 ・bits/stdc++.hのプリコンパイル
+    find /usr -name stdc++.h でbitsフォルダの検索
+    bitsフォルダを ac-libraryの下に置く
+
+
     ~/atcoder/ac-library/bits に移動
-    ~/atcoder/ac-library/bits 下に stdc++.h.gch ファイルがある
+    ~/atcoder/ac-library/bits 下に stdc++.h.gch フォルダがある
     ~/atcoder/ac-library/bits で以下を実行 
     g++-9 (コンパイラオプション) stdc++.h -o stdc++.h.gch/(適当なファイル名).gch
 
