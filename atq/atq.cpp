@@ -38,7 +38,7 @@ void out_file(ofstream &output_file, vector<pair<string, string>> &problems) {
     }
 }
 
-int main(int argc, char *argv[]) {
+void add() {
     ifstream input_file("/home/user01/atcoder/atq/queue_1.txt");
     vector<pair<string, string>> problems;
 
@@ -53,4 +53,27 @@ int main(int argc, char *argv[]) {
     ofstream output_file("/home/user01/atcoder/atq/queue_1.txt");
 
     out_file(output_file, problems);
+}
+
+void look() {
+    ifstream input_file("/home/user01/atcoder/atq/queue_1.txt");
+    vector<pair<string, string>> problems;
+
+    read_file(input_file, problems);
+
+    out_console(problems);
+}
+
+int main(int argc, char *argv[]) {
+    string command = (string)argv[1];
+
+    if (command == "add") {
+        add();
+    }
+    else if (command == "look") {
+        look();
+    }
+    else {
+        cout << "command eroor" << endl;
+    }
 }
