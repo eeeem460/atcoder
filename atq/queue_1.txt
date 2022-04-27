@@ -1,12 +1,10 @@
-22/04/15 https://atcoder.jp/contests/abc216/tasks/abc216_e
+1, ABC216_E  22/04/16 https://atcoder.jp/contests/abc216/tasks/abc216_e
 
-22/04/16 https://atcoder.jp/contests/abc249/tasks/abc249_a
+2, ABC249_B  22/04/22 https://atcoder.jp/contests/abc249/tasks/abc249_b
 
-22/04/22 https://atcoder.jp/contests/typical90/tasks/typical90_ab
+3, TYPICAL90_AB  22/04/22 https://atcoder.jp/contests/typical90/tasks/typical90_ab
 
-22/04/27 https://atcoder.jp/contests/abc014/tasks/abc014_4
+4, ABC014_4  22/04/28 https://atcoder.jp/contests/abc014/tasks/abc014_4
 
-22/04/28 https://atcoder.jp/contests/abc249/tasks/abc249_a
-
-22/05/03 https://atcoder.jp/contests/abc192/tasks/abc192_e
+5, ABC192_E  22/05/03 https://atcoder.jp/contests/abc192/tasks/abc192_e
 
