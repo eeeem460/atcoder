@@ -7,3 +7,6 @@ atq look
 
 atq push YYMMDD 問題のURL
 問題の追加
+
+atq pop 問題番号
+問題の削除
