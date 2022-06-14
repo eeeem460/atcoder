@@ -21,6 +21,8 @@
 
 
     "generateSnippet.snippetFilePath": "/mnt/c/Users/user01/AppData/Roaming/Code/User/snippets/",
+    // ↓ ワークスペース内にスニペットを作る
+    // "generateSnippet.snippetFilePath": "/home/user01/atcoder/.vscode/",
 
 
     "code-runner.runInTerminal": true,
