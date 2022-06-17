@@ -83,7 +83,10 @@ void push_problem(vector<problem> &problems) {
 void pop_out_console(int index, vector<problem> &problems) {
     for (int i = problems.size() - 1; 0 <= i; i--) {
         if (i == index - 1) {
-            cout << "\033[33m" << "~~~~~~~~~~~~~~~~~~~~~~~~ erased row ~~~~~~~~~~~~~~~~~~~~~~~~" << endl << endl << "\033[m";
+            cout << "\033[33m"
+                 << "~~~~~~~~~~~~~~~~~~~~~~~~ erased row ~~~~~~~~~~~~~~~~~~~~~~~~" << endl
+                 << endl
+                 << "\033[m";
             continue;
         }
         auto [date, name, url] = problems[i];
@@ -156,9 +159,9 @@ int main(int argc, char *argv[]) {
     vector<problem> problems;
 
     // ファイル入力
-    ifstream input_file("/home/user01/atcoder/atq/queue_1.txt");
+    ifstream input_file("/home/user01/atcoder/command/queue_1.txt");
     read_file(input_file, problems);
-    
+
     // コマンドライン引数によって場合分け
     string command = (string)argv[1];
     if (command == "push") {
@@ -175,6 +178,6 @@ int main(int argc, char *argv[]) {
     }
 
     // ファイル出力
-    ofstream output_file("/home/user01/atcoder/atq/queue_1.txt");
+    ofstream output_file("/home/user01/atcoder/command/queue_1.txt");
     out_file(output_file, problems);
 }
