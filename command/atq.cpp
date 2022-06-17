@@ -81,6 +81,7 @@ void push_problem(vector<problem> &problems) {
 
 // pop した瞬間の状態をコンソール出力，pop した行も表示
 void pop_out_console(int index, vector<problem> &problems) {
+    cout << endl;
     for (int i = problems.size() - 1; 0 <= i; i--) {
         if (i == index - 1) {
             cout << "\033[33m"
@@ -97,6 +98,7 @@ void pop_out_console(int index, vector<problem> &problems) {
 
 // 配列 problems をコンソール出力．期限超過分は赤色を着色
 void out_console(vector<problem> &problems) {
+    cout << endl;
     string today_date = get_today_date();
 
     for (int i = problems.size() - 1; 0 <= i; i--) {
