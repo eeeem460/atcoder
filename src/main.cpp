@@ -24,42 +24,7 @@ const int MAX_DUBUG_SIZE = 10;
 
 int main() {
     INCANT;
-    ll n, k;
-    cin >> n >> k;
-    vector<ll> a(n);
-    for (ll i = 0; i < n; i++) {
-        cin >> a[i];
-    }
-
-    ll ans = LINF;
-    for (int bit = 0; bit < (1 << n); bit++) {  // 2^n 通り
-        if (__builtin_popcountll(bit) < k) {
-            continue;
-        }
-
-        ll now_ans = 0;
-        ll now_hight = a[0];
-        for (int i = 1; i < n; i++) {
-            if (bit & (1 << i)) {  // i 番目のフラグが立っているか
-                if (now_hight < a[i]) {
-                    now_hight = a[i];
-                }
-                else {
-                    now_hight++;
-                    now_ans += now_hight - a[i];
-                }
-            }
-            else {
-                if (now_hight < a[i]) {
-                    now_hight = a[i];
-                }
-            }
-        }
-
-        chmin(ans, now_ans);
-    }
-
-    cout << ans << '\n';
+    
 }
 
 /*
