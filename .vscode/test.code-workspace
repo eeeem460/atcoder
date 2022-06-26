@@ -1,0 +1,24 @@
+{
+	"folders": [
+		{
+			"path": ".."
+		},
+		{
+			"path": "../src2/EDPC"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"files.associations": {
+			"iostream": "cpp",
+			"vector": "cpp",
+			"ostream": "cpp",
+			"iomanip": "cpp",
+			"cmath": "cpp",
+			"all": "cpp"
+		},
+		"generateSnippet.snippetFilePath": "/mnt/c/Users/user01/AppData/Roaming/Code/User/snippets/"
+	}
+}

@@ -1,0 +1,76 @@
+// 既定値を上書きするには、このファイル内にキー バインドを挿入します
+[
+    {
+      "key": "ctrl+oem_1",
+      "command": "code-runner.run"
+    },
+    {
+      "key": "ctrl+shift+oem_1",
+      "command": "code-runner.runCustomCommand"
+    },
+    {
+      "key": "ctrl+t",
+      "command": "workbench.action.terminal.focus"
+    },
+    {
+      "key": "ctrl+i",
+      "command": "center-editor-window.center",
+      "when": "editorTextFocus || findWidgetVisible"
+    },
+    {
+      "key": "ctrl+l",
+      "command": "-center-editor-window.center",
+      "when": "editorTextFocus || findWidgetVisible"
+    },
+    {
+      "key": "ctrl+oem_minus",
+      "command": "-workbench.action.zoomOut"
+    },
+    {
+      "key": "ctrl+e",
+      "command": "workbench.action.focusFirstEditorGroup"
+    },
+    {
+      "key": "ctrl+1",
+      "command": "-workbench.action.focusFirstEditorGroup"
+    },
+    {
+      "key": "ctrl+r",
+      "command": "workbench.action.quickOpen"
+    },
+    {
+      "key": "ctrl+e",
+      "command": "-workbench.action.quickOpen"
+    },
+    {
+      "key": "shift+enter",
+      "command": "colonize.newline",
+      "when": "editorTextFocus"
+    },
+    {
+      "key": "alt+enter",
+      "command": "-colonize.newline",
+      "when": "editorTextFocus"
+    },
+    {
+      "key": "ctrl+oem_minus",
+      "command": "explorer.newFile"
+    },
+    {
+      "key": "ctrl+shift+t",
+      "command": "workbench.action.closePanel"
+    },
+  
+    // latex-workshop
+    {
+      "key": "alt+s",
+      "command": "latex-workshop.select-envname",
+      "when": "editorLangId == latex"
+    },
+    
+    // 無効
+    {
+      "key": "ctrl+shift+oem_minus",
+      "command": "-workbench.action.zoomOut"
+    }
+]
